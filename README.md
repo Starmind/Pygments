@@ -8,11 +8,12 @@ Currently only the HTML Formatter is supported with a limited subset of paramete
 Usage
 -----
 
-$pygmentize = new Starmind\Pygmentize();
-
-$formatter = new Starmind\Formatter\Html();
-$pygments = new Starmind\Pygments($formatter);
-
-echo $pygments->pygmentize('<?php echo "test"; ?>', 'php');
-
-echo $formatter->generateStyles($pygmentize);
+    $pygmentize = new Starmind\Pygmentize();  
+    $formatter = new Starmind\Formatter\Html();  
+    $pygments = new Starmind\Pygments($formatter);
+    
+    // highlight the specified string
+    echo $pygments->pygmentize('<?php echo "test"; ?>', 'php');
+    
+    // generate the css rules
+    echo $formatter->generateStyles($pygmentize);
