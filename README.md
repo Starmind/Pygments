@@ -1,7 +1,7 @@
 Pygments PHP Library
 ====================
 
-The Pygments PHP library provides a way to work with the pygmentize CLI.
+The Pygments PHP library provides a way to work with the pygmentize CLI from http://pygments.org.
 
 Currently only the HTML Formatter is supported with a limited subset of parameters.
 
