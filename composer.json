@@ -1,0 +1,22 @@
+{
+    "name": "starmind/pygments",
+    "type": "library",
+    "description": "Pygments PHP Library",
+    "keywords": ["pygments","syntax highlighting"],
+    "homepage": "https://github.com/Starmind/Pygments",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Gratzl",
+            "email": "daniel.gratzl@starmind.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "autoload": {
+        "psr-0": { "Starmind\\Pygments\\": "" }
+    },
+    "target-dir": "Starmind/Pygments",
+    "minimum-stability": "dev"
+}
