@@ -1,6 +1,6 @@
 <project name="starmind/pygments" default="build">
     <target name="test" depends="prepare,phpunit"/>
-    <target name="build" depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdoc,phpunit,phpcb"/>
+    <target name="build" depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdoc,phpunit"/>
     <target name="build-ci" depends="install_dependencies,build"/>
     <target name="build-minimal" depends="prepare,lint,phploc,pdepend,phpcpd,phpunit,phpcb"/>
     <target name="build-parallel" depends="prepare,lint,tools-parallel,phpunit,phpcb"/>
