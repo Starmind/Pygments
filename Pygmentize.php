@@ -33,11 +33,24 @@ class Pygmentize
      */
     public function executeCommand($command, $expectedReturnValue = 0)
     {
-        $output = array();
-        $retVal = -1;
-        
         $command = sprintf('%s %s', $this->pygmentize, $command);
 
+        $output = $this->exec($command, $expectedReturnValue);
+
+        return join("\n", $output);
+    }
+
+    /**
+     * @param $command
+     * @param $expectedReturnValue
+     * @return mixxed
+     * @throws Exception\CommandException
+     */
+    protected function exec($command, $expectedReturnValue)
+    {
+        $output = null;
+        $retVal = -1;
+        
         exec($command, $output, $retVal);
 
         if ($retVal != $expectedReturnValue) {
@@ -45,7 +58,7 @@ class Pygmentize
                 'Error executing "%s". Return code %d', $command, $retVal
             ));
         }
-
-        return join("\n", $output);
+        
+        return $output;
     }
 }

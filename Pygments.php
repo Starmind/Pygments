@@ -4,36 +4,40 @@ namespace Starmind\Pygments;
 
 class Pygments
 {
-    protected $pygmentize = '/usr/bin/pygmentize';
-    
+    protected $pygmentize;
     protected $formatter;
 
     /**
      * @param Pygmentize $pygmentize
-     * @param Formatter $formatter
      */
-    public function __construct(Pygmentize $pygmentize, Formatter $formatter)
+    public function __construct(Pygmentize $pygmentize)
     {
         $this->pygmentize = $pygmentize;
-        $this->formatter = $formatter;
     }
 
     /**
-     * @param $code
+     * @param $input
      * @param null $lexer
-     * @return string
-     * @throws RuntimeException
+     * @param Formatter $formatter
+     * @return mixed
      */
-    public function pygmentize($code, $lexer = null)
+    public function highlight($input, $lexer = null, Formatter $formatter)
     {
-        $tmpFile = tempnam("/tmp", "pygmentize_");
+        // set formatter
+        $this->formatter = $formatter;
+        
+        if (is_file($input)) {
+            $outputString = $this->highlightFile($input, $lexer);
+        } else {
+            $tmpFile = tempnam("/tmp", "pygmentize_");
 
-        $this->createTempFile($tmpFile, $code);
- 
-        $outputString = $this->pygmentizeFile($tmpFile, $lexer);
+            $this->createTempFile($tmpFile, $input);
 
-        $this->removeTempFile($tmpFile);
+            $outputString = $this->highlightFile($tmpFile, $lexer);
 
+            $this->removeTempFile($tmpFile);    
+        }
+        
         return $outputString;
     }
 
@@ -43,7 +47,7 @@ class Pygments
      * @return string
      * @throws \RuntimeException
      */
-    public function pygmentizeFile($file, $lexer)
+    protected function highlightFile($file, $lexer)
     {
         if (! file_exists($file)) {
             throw new \RuntimeException(sprintf('File %s does not exist.', $file));
@@ -86,7 +90,7 @@ class Pygments
         if ($fh !== false) {
             fwrite($fh, $content );
             fclose($fh);
-            chmod($filename, 0777);    
+            chmod($filename, 0777);
         } else {
             throw new \RuntimeException(sprintf('Could not write %s', $filename));
         }
@@ -98,7 +102,7 @@ class Pygments
     protected function removeTempFile($filename)
     {
         if (file_exists($filename)) {
-            unlink($filename);    
+            unlink($filename);
         }
     }
 }

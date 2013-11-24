@@ -17,6 +17,6 @@ abstract class Formatter
         array_walk($options, function($value, $key) use (&$optionString) {
             $optionString .= sprintf('-P %s=%s ', $key, $value);
         });
-        return $optionString;
+        return trim($optionString);
     }
 }
