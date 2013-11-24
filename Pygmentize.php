@@ -17,8 +17,7 @@ class Pygmentize
      */
     public function __construct($pygmentize = '/usr/bin/pygmentize')
     {
-        $exists = file_exists($pygmentize);
-        if (! $exists || ($exists && ! is_executable($pygmentize))) {
+        if (! file_exists($pygmentize)) {
             throw new \InvalidArgumentException(sprintf('pygmentize could not be found in %s', $pygmentize));
         }
         
