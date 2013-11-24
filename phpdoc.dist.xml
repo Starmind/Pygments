@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+    <title>starmind/pygments</title>
+    <parser>
+        <target>build/phpdoc</target>
+        <markers>
+            <item>TODO</item>
+            <item>FIXME</item>
+        </markers>
+        <extensions>
+            <extension>php</extension>
+            <extension>php3</extension>
+            <extension>phtml</extension>
+        </extensions>
+        <visibility></visibility>
+    </parser>
+    <transformer>
+        <target>build/api</target>
+    </transformer>
+    <logging>
+        <level>warn</level>
+        <paths>
+            <default>logs/{DATE}-phpdoc.log</default>
+            <errors>logs/{DATE}-phpdoc.errors.log</errors>
+        </paths>
+    </logging>
+    <transformations>
+        <template name="responsive" />
+    </transformations>
+    <files>
+        <directory>.</directory>
+        <ignore>Tests/*</ignore>
+        <ignore>vendor/*</ignore>
+    </files>
+</phpdoc>
