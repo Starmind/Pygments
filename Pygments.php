@@ -21,7 +21,7 @@ class Pygments
      * @param Formatter $formatter
      * @return mixed
      */
-    public function highlight($input, $lexer = null, Formatter $formatter)
+    public function highlight($input, $lexer, Formatter $formatter)
     {
         // set formatter
         $this->formatter = $formatter;
@@ -35,7 +35,7 @@ class Pygments
 
             $outputString = $this->highlightFile($tmpFile, $lexer);
 
-            $this->removeTempFile($tmpFile);    
+            $this->removeTempFile($tmpFile);
         }
         
         return $outputString;
@@ -55,7 +55,7 @@ class Pygments
         
         try {
             $outputString = $this->pygmentize->executeCommand($this->getHighlightCommand($lexer, $file));
-        } catch(\RuntimeException $e) {
+        } catch (\RuntimeException $e) {
             $outputString = $e->getMessage();
         }
         
@@ -88,7 +88,7 @@ class Pygments
         $fh = fopen($filename, "w");
         
         if ($fh !== false) {
-            fwrite($fh, $content );
+            fwrite($fh, $content);
             fclose($fh);
             chmod($filename, 0777);
         } else {

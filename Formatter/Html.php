@@ -77,9 +77,9 @@ class Html extends Formatter
             $styles = $pygmentize->executeCommand($command);
             
             if ($includeStyleTags) {
-                return sprintf("<style>\n%s\n</style>", $styles);    
-            } 
-              
+                return sprintf("<style>\n%s\n</style>", $styles);
+            }
+
             return $styles;
         } catch (CommandException $e) {
             return '/* Could not generate Styles */';
