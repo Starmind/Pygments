@@ -15,5 +15,8 @@ Usage
     // highlight the specified string
     echo $pygments->highlight('<?php echo "test"; ?>', 'php', $formatter);
     
+    // by passing null for the second parameter, pygments will guess which lexer to use
+    echo $pygments->highlight('<?php echo "test"; ?>', null, $formatter);
+    
     // generate the css rules
     echo $formatter->generateStyles($pygmentize);
