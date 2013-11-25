@@ -10,10 +10,10 @@ Usage
 
     $pygmentize = new Starmind\Pygmentize();  
     $formatter = new Starmind\Formatter\Html();  
-    $pygments = new Starmind\Pygments($formatter);
+    $pygments = new Starmind\Pygments();
     
     // highlight the specified string
-    echo $pygments->pygmentize('<?php echo "test"; ?>', 'php');
+    echo $pygments->highlight('<?php echo "test"; ?>', 'php', $formatter);
     
     // generate the css rules
     echo $formatter->generateStyles($pygmentize);
