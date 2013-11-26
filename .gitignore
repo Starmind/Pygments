@@ -10,5 +10,6 @@ build/coverage
 build/logs
 build/pdepend
 build/phpdox
+build/phpdoc
 phpdoc.xml
 phpunit.xml
