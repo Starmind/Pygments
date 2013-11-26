@@ -10,7 +10,7 @@ Usage
 
     $pygmentize = new Starmind\Pygmentize();  
     $formatter = new Starmind\Formatter\Html();  
-    $pygments = new Starmind\Pygments();
+    $pygments = new Starmind\Pygments($pygmentize);
     
     // highlight the specified string
     echo $pygments->highlight('<?php echo "test"; ?>', 'php', $formatter);
