@@ -11,8 +11,6 @@ use Starmind\Pygments\Pygmentize;
  */
 class Html extends Formatter
 {
-    protected $format = 'html';
-
     protected $cssClass;
     protected $style;
     protected $linenos;
